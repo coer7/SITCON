@@ -10,9 +10,19 @@ var users = require('./routes/users');
 
 var app = express();
 
+var fs = require('fs');
+var tmp = require('tmp');
+var flash = require('connect-flash');
+var methodOverride = require('method-override');
+var localStrategy = require('passport-local');
+var passport = require('passport');
+var fs = require('fs');
+var fs = require('fs');
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
