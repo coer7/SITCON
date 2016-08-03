@@ -22,7 +22,7 @@ var fs = require('fs');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -66,5 +66,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
+app.listen(3000, function() {
+  console.log("Server is running on port 3000...");
+});
 module.exports = app;
