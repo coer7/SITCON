@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Summer2016</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/stylesheet/main.css"/>
+		<link rel="stylesheet" type="text/css" href="/stylesheet/flash.css">
+	</head>
+	<body style="border: 30px solid #585060;"> 
+	<div class='alertcontainer'>
+		<% if (error && error.length > 0) { %>
+		<div class="alert alert-danger" role="alert"><%=error%></div>
+	<% } %>
+	<% if (success && success.length > 0) {%>
+		<div class="alert alert-success" role="alert"><%=success %></div>
+	<%	} %>
+	<% if (jizz && jizz.length > 0) {%>
+		<div class='alert alert-warning' role='alert'><%=jizz%></div>
+	<% } %>
+	<% if (tle && tle.length > 0) { %>
+		<div class='alert alert-info' role='alert'><%= tle %></div>
+	<% } %>
+	</div>
+		

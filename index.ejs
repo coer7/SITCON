@@ -1,0 +1,196 @@
+<% include partials/header.ejs %>
+<div id="wrapper">
+		<header id="header">
+			<div class="inner">
+					<a href="/index" class="logo">
+						<span class="symbol"><img src="/images/logo.svg" alt="" /></span><span class="title">INFOR x ZSISC</span>
+					</a>
+					<nav>
+						<ul>
+							<li><a href="#menu">Menu</a></li>
+						</ul>
+					</nav>
+			</div>
+		</header>
+		<nav id="menu">
+			<% if (currentUser) { %>
+				<h2><%= currentUser.username %> <%= currentUser.nickname %></h2>
+			<% } else {%>
+				<h2>Please Sign Up or Login</h2>
+			<% } %>
+			<ul>
+				<li><a href="/index">Home</a></li>
+				<% if (currentUser) {%>
+					<li><a href="/rank">Rank</a></li>
+					<li><a href="/profile">Profile</a></li>
+					<li><a href="/logout">Log Out</a></li>
+				<%} else {%>
+					<li><a href="/login">Log In</a></li>
+					<li><a href="/register">Sign Up</a></li>
+				<%}%>	
+			</ul>
+		</nav>
+		<div id="main">
+			<div class="inner">
+				<header>
+					<h1>2016 迎楓舞建</h1>
+					<p>我們的教學內容以程式語言為主軸，還包有目前最潮的機器學習、精緻的電子繪圖以及專業的遊戲製作，引領你進入資訊的領域。 <br><em>-- by INFOR 29th <a href="http://infor.org">infor.org</a></em><br><em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ZSISC 23rd	<a href="https://www.facebook.com/%E4%B8%AD%E5%B1%B1%E5%A5%B3%E9%AB%98%E8%B3%87%E8%A8%8A%E7%A0%94%E7%A9%B6%E7%A4%BE23rd-227240130967095/">www.facebook.com</a></em></p>
+				</header>
+				<section class="tiles">
+				<article class="style1">
+						<span class="image">
+							<img src="/images/pic01.jpg" alt="" />
+						</span>
+						<a href="/class/unity">
+							<h2>Unity 3D</h2>
+							<div class="content">
+								<p>最夯的遊戲引擎，最簡單明瞭的函式庫，帶領你進入遊戲設計的殿堂</p>
+							</div>
+						</a>
+						
+					</article>
+					<article class="style2">
+						<span class="image">
+							<img src="/images/pic02.jpg" alt="" />
+						</span>
+						<a href="/class/python">
+							<h2>Python</h2>
+							<div class="content">
+								<p>直譯式語言，執行快速，簡單好寫，最適合初學者學習的程式語言</p>
+							</div>
+						</a>
+						
+					</article>
+					<article class="style3">
+						<span class="image">
+							<img src="/images/pic03.jpg" alt="" />
+						</span>
+						<a href="/class/pygame">
+							<h2>Pygame</h2>
+							<div class="content">
+								<p>學程式能幹嘛？上電腦課？耍帥耍酷？讓我帶領你從Pygame入門吧</p>
+							</div>
+						</a>
+						
+					</article>
+				<article class="style4">
+						<span class="image">
+							<img src="/images/pic04.jpg" alt="" />
+						</span>
+						<a href="/class/java">
+							<h2>Java</h2>
+							<div class="content">
+								<p>讓簡單的Java帶領你進入程式的世界</p>
+							</div>
+						</a>
+					</article>
+					<article class="style5">
+						<span class="image">
+							<img src="/images/pic05.jpg" alt="" />
+						</span>
+						<a href="/class/web">
+							<h2>Web</h2>
+							<div class="content">
+								<p>想知道你看到的網站是怎麼做出來的嗎?想創造自己的網站嗎?WEB入門帶你探索無邊無際的網際網路</p>
+							</div>
+						</a>
+					</article>
+					<article class="style6">
+						<span class="image">
+							<img src="/images/pic06.jpg" alt="" />
+						</span>
+						<a href="/class/ai">
+							<h2>AI/SAI</h2>
+							<div class="content">
+								<p>AI - 業界標準的向量圖形應用軟體，讓你快速將靈感變成美麗的藝術作品，簡單學設計 
+								<br>SAI - 沒有繪圖板也能畫出漂亮的電繪</p>
+							</div>
+						</a>
+					</article>
+					
+					<article class="style2">
+						<span class="image">
+							<img src="/images/pic07.jpg" alt="" />
+						</span>
+						
+						<a href="/class/cpp">
+							<h2>C++</h2>
+							<div class="content">
+								<p>一種歷史悠久、規模龐大、高效率的程式語言，從遊戲開發到工業都有它的身影</p>
+							</div>
+						</a>
+					</article>
+					
+					
+					
+					
+					
+					
+					
+					<article class="style3">
+						<span class="image">
+							<img src="/images/pic08.jpg" alt="" />
+						</span>
+						<a href="/class/ae">
+							<h2>AE</h2>
+							<div class="content">
+								<p>簡單製作令人驚嘆的影片</p>
+							</div>
+						</a>
+					</article>
+					<article class="style1">
+						<span class="image">
+							<img src="/images/pic09.jpg" alt="" />
+						</span>
+						<a href="/class/rpg">
+							<h2>RPG MAKER</h2>
+							<div class="content">
+								<p>做一個RPG遊戲大師!!</p>
+							</div>
+						</a>
+					</article>
+					<!-- <article class="style5">
+						<span class="image">
+							<img src="images/pic10.jpg" alt="" />
+						</span> -->
+						<!-- <a href="generic.html">
+							<h2>Ultricies</h2>
+							<div class="content">
+								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+							</div>
+						</a>
+					</article>
+					<article class="style6">
+						<span class="image">
+							<img src="images/pic11.jpg" alt="" />
+						</span>
+						<a href="generic.html">
+							<h2>Dictum</h2>
+							<div class="content">
+								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+							</div>
+						</a>
+					</article>
+					<article class="style4">
+						<span class="image">
+							<img src="images/pic12.jpg" alt="" />
+						</span>
+						<a href="generic.html">
+							<h2>Pretium</h2>
+							<div class="content">
+								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+							</div>
+						</a> -->
+					<!-- </article> -->
+				</section>
+			</div>
+		</div>
+
+	<!-- Footer -->
+		
+
+</div>
+
+<!-- Scripts -->
+
+<% include partials/footer.ejs %>
