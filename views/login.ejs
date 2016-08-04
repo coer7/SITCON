@@ -22,7 +22,14 @@
 				<div class="nav-right">
 					<nav>
 						<a href="/register">註冊</a>
-						<a href="/login">登入</a>
+						<% if (signed) { %>
+							<a href="/login">登出</a>
+							<% console.log(signed) %>
+						<% }else { %>
+							<a href="/login">登入</a>
+							<% console.log(signed) %>
+
+						<% } %>
 						<a href="/personal_page">個人資料</a>
 					</nav>
 				</div>
@@ -30,6 +37,8 @@
 
 			<main>
 				<div class="column-center">
+					
+					<% if (! signed) { %>
 					<h2>歡迎登入 隨便交易中心</h2>
 					<form name="form" method="post" action="/login">
 						帳號：<input type="text" name="username" /> <br><br>
@@ -39,6 +48,15 @@
 						<input type ="button" onclick="javascript:location.href='/register'" value="註冊帳號"></input>
 
 					</form>
+					<% } else { %>
+					<h2>歡迎登出 隨便交易中心</h2>
+					<form name="form" method="post" action="/logout">
+						
+						<input type="submit" name="button" value="登出" />&nbsp;&nbsp;	
+						
+
+					</form>
+					<% } %>
 				</div>
 			</main>
 

@@ -1,26 +1,51 @@
 var express = require('express');
 var router = express.Router();
+var bool=false;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' ,
-  "signed":!!req.body.username});
+  	used = bool ? true : false;
+	
+  	res.render('index', { title: 'Express' ,"signed": used});
 });
 
 router.get('/index', function(req, res, next) {
-  res.render('index', { title: 'Express' ,"signed":!!req.body.username});
+	used = bool ? true : false;
+	
+  	res.render('index', { title: 'Express' ,"signed": used});
+
+	
 });
 
+router.post('/logout', function(req, res) {
+	
+	bool = false;
+	used = false;
+  
+  	res.render('index', { title: 'Express' ,"signed": used});
+
+	
+});
 router.get('/register', function(req, res, next) {
-  res.render('register', { title: 'Express register' });
+  res.render('register', { title: 'Express register',"signed":!!req.cookie.username });
 });
 
 router.get('/login', function(req, res, next) {
-  res.render('login', { title: 'Express login' });
+	used = bool ? true : false;
+	
+  
+  	res.render('login', { title: 'Express' ,"signed": used});
+
+	
 });
 
 router.get('/personal_page', function(req, res, next) {
-  res.render('personal_page', { title: 'Express personal' });
+	used = bool ? true : false;
+	
+  	
+  	res.render('personal_page', { title: 'Express' ,"signed":used});
+
+	
 });
 
 router.get('/userlist', function(req, res) {
@@ -120,9 +145,9 @@ router.post('/login', function(req, res) {
 		console.log("123");
 		
 		var db = req.db;
-		var bool=true;
 		var collection = db.collection('usercollection');
 		var userName = req.body.username;
+		var flag=true;
 		//console.log("userName= "+userName);
 		var passWord = req.body.password;
 		//console.log("passWord= "+passWord);
@@ -130,20 +155,22 @@ router.post('/login', function(req, res) {
 			var objKey = Object.keys(docs);
 			for( var i=0;i<objKey.length;i++){
 			  if(userName == docs[i].username){
-				bool=false;
+				flag=false;
 				console.log("Hello! " + userName);
 				console.log("Your password is "+passWord)
 				//res.cookie('username', req.body.username, { signed: true});		
 				//res.cookie('name', 'tobi', { signed: true });
+				bool = true;
 				res.render('index',{
-					"signed":!!req.body.username});
+					"signed": req.body.username});
 				//res.cookie('password', req.body.password, { path: '/index', signed: true });
 
 			  }
 			}
-			if(bool){
+			if(flag){
 				console.log("Your username does not exist!");
-				res.render('index');
+				res.render('login',{
+					"signed":false});
 			}
 		});
 		
