@@ -73,40 +73,41 @@ router.post('/register', function(req, res) {
     });
 });
 router.post('/login', function(req, res) {
-	console.log("You are in!");
+	//console.log("You are in!");
 	var db = req.db;
+	var bool=true;
 	var collection = db.collection('usercollection');
 	var userName = req.body.username;
-	console.log("userName= "+userName);
+	//console.log("userName= "+userName);
 	var passWord = req.body.password;
-	console.log("passWord= "+passWord);
+	//console.log("passWord= "+passWord);
     collection.find({},{},function(e,docs){
 		var objKey = Object.keys(docs);
 		
-		console.log("objKey length= "+objKey.length);
-		console.log("doc= "+JSON.stringify(docs[0]));
+		//console.log("objKey length= "+objKey.length);
+		//console.log("doc= "+JSON.stringify(docs[0]));
 
-		objKey.forEach(function(objectid){
+		/*objKey.forEach(function(objectid){
 			console.log("test");
 			var items = Object.keys(docs[objectid]);
 			items.forEach(function(itemkey) {
 			  var itemvalue =docs[objectid][itemkey];
 			  console.log("ID="+objectid+': '+itemkey+' = '+itemvalue);
 			})
-		})
+		})*/
 
     for( var i=0;i<objKey.length;i++){
-      
-
-      if(userName == JSON.stringify(docs[i].username)){
+	
+      if(userName == docs[i].username){
+		bool=false;
         console.log("Hello! " + userName);
         console.log("Your password is "+passWord)
-      }else{
-        console.log("Your username is not exist!");
       }
 
     }
-	
+	if(bool){
+		console.log("Your username does not exist!");
+	}
 		
 	});
 
