@@ -72,5 +72,37 @@ router.post('/register', function(req, res) {
         }
     });
 });
+router.post('/login', function(req, res) {
+	console.log("You are in!");
+	var db = req.db;
+	var collection = db.collection('usercollection');
+	var userName = req.body.username;
+	console.log("userName= "+userName);
+	var passWord = req.body.password;
+	console.log("passWord= "+passWord);
+	collection.find({username:userName},{},function(e,docs){
+
+		console.log("username= "+username);
+		console.log("docs= "+docs);
+		
+		
+	})
+    collection.find({},{},function(e,docs){
+		var objKey = Object.keys(docs);
+		console.log("objKey= "+objKey);
+		console.log("doc= "+JSON.stringify(docs[0]));
+		/*objKey.forEach(function(objectid){
+			console.log("test");
+			var items = Object.keys(docs[objectid]);
+			items.forEach(function(itemkey) {
+			  var itemvalue =docs[objectid][itemkey];
+			  console.log(objectid+': '+itemkey+' = '+itemvalue);
+			})
+		})*/
+	});
+
+	
+});
+
 module.exports = router;
 
