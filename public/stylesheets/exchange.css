@@ -2,11 +2,13 @@
 	教學: http://goo.gl/q9j4tN	
 */
 @import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
-
-*{font-size:14px; font-family: 'Noto Sans TC', sans-serif;}
+*{font-size:20px; font-family: 'Noto Sans TC', sans-serif;}
 /* body {padding:3%; line-height:2em;}*/
 html ,body { line-height:2em; }
-h1{font-size:2em;}
+h1{
+	font-size:2em;
+	/* color: red;*/
+}
 
 
 body { background-color: #AAD7EE;
@@ -85,3 +87,28 @@ header > div a {
 	text-decoration: none;
 	color: #EEE;
 }
+
+
+/**************************************
+item
+**************************************/
+.item {
+	display:inline-block;
+	width:40%;
+	min-width: 15em;
+	background-color:white;
+	margin: 4.75%;
+	border: 5em;
+}
+
+.item_title .item_name, .item_price, .time_start{
+	float : left;
+}
+.item_owner{
+	margin-left: 2.5em;
+	font-size: 0.87em;
+}
+.item_time_start ,.item_time_end{
+	font-size: 0.80em;
+}
+
