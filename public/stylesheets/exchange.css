@@ -11,13 +11,12 @@ h1{
 }
 
 
-body { background-color: #AAD7EE;
+body { background-color: #fff5e6;
 			color: #000000;
-			font-family: Arial, Verdana, sans-serif;
 			-moz-background-size: cover;
 			background-size: cover;}
 header   { text-align: center;}
-footer   { background-color: #A9D7DA;
+footer   { background-color:#ffb31a;
 			color: #000000;
 			font-size: .80em;
 			font-style: italic;
@@ -25,7 +24,7 @@ footer   { background-color: #A9D7DA;
 h2{
 	text-align:center;
 }
-.wrapper { background-color: #E0F5FB;
+.wrapper { background-color:  #ffc266;
 		border-radius: 3px;
 		margin-left: auto;	
         margin-right: auto;
