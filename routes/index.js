@@ -84,6 +84,7 @@ router.post('/login', function(req, res) {
 		var objKey = Object.keys(docs);
 		console.log("objKey= "+objKey);
 		console.log("doc= "+JSON.stringify(docs[0]));
+
 		objKey.forEach(function(objectid){
 			console.log("test");
 			var items = Object.keys(docs[objectid]);
@@ -92,6 +93,9 @@ router.post('/login', function(req, res) {
 			  console.log("ID="+objectid+': '+itemkey+' = '+itemvalue);
 			})
 		})
+
+		console.log("doc= "+JSON.stringify(docs[0].password));
+		
 	});
 
 	
