@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <title>隨便交易中心</title>
+    <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="stylesheets/exchange.css">
+		<link rel="icon" href="image/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+  </head>
+   <body>
+		<div class="wrapper">
+			<header>
+				<h1>隨便交易中心</h1>
+				<div class="nav-right">
+					<nav>
+						<a href="/index">首頁</a>
+						<a href="/register">註冊</a>
+						<a href="/login">登入</a>
+						<a href="/personal_page">個人資料</a>
+					</nav>
+				</div>
+			</header>
+
+
+			<main>
+				<div class="column-center">
+					<h2>歡迎登入 隨便交易中心</h2>
+					<form name="form" method="post" action="login/connect.php">
+						帳號：<input type="text" name="id" /> <br><br>
+						密碼：<input type="password" name="pw" /> <br><br>
+						<input type="submit" name="button" value="登入" />&nbsp;&nbsp;	
+						<input type ="button" onclick="javascript:location.href='register.html'" value="註冊帳號"></input>
+					</form>
+				</div>
+			</main>
+
+			<footer>
+				<p>
+					Copyleft(?) &copy; 第二小隊交易系統<br>
+					<a href="mailto:session@sitcon.org">取得協助</a><br>
+				</p>
+			</footer>
+		</div>
+
+  </body>
+</html>
