@@ -16,6 +16,7 @@ router.get('/index', function(req, res, next) {
 
 	
 });
+<<<<<<< HEAD
 
 router.post('/logout', function(req, res) {
 	
@@ -25,29 +26,45 @@ router.post('/logout', function(req, res) {
   	res.render('index', { title: 'Express' ,"signed": used});
 
 	
+=======
+router.get('/index_', function(req, res, next) {
+  res.render('index_', { title: 'Express' ,"signed":!!req.body.username});
+>>>>>>> e674feb450286033246955e1ecc6d3ef7260cd59
 });
 router.get('/register', function(req, res, next) {
   res.render('register', { title: 'Express register',"signed":!!req.cookie.username });
 });
-
 router.get('/login', function(req, res, next) {
+<<<<<<< HEAD
 	used = bool ? true : false;
 	
   
   	res.render('login', { title: 'Express' ,"signed": used});
 
 	
+=======
+  res.render('login', { title: 'Express login' ,"signed":!!req.body.username});
 });
-
+router.get('/login_', function(req, res, next) {
+  res.render('login_', { title: 'Express login' ,"signed":!!req.body.username});
+>>>>>>> e674feb450286033246955e1ecc6d3ef7260cd59
+});
 router.get('/personal_page', function(req, res, next) {
+<<<<<<< HEAD
 	used = bool ? true : false;
 	
   	
   	res.render('personal_page', { title: 'Express' ,"signed":used});
 
 	
+=======
+  res.render('personal_page', { title: 'Express personal' ,"signed":false});
+>>>>>>> e674feb450286033246955e1ecc6d3ef7260cd59
 });
-
+router.get('/personal_page_', function(req, res, next) {
+  res.render('personal_page_');
+});
+//var login=false;
 router.get('/userlist', function(req, res) {
     var db = req.db;
     var collection = db.get('usercollection');
@@ -160,17 +177,27 @@ router.post('/login', function(req, res) {
 				console.log("Your password is "+passWord)
 				//res.cookie('username', req.body.username, { signed: true});		
 				//res.cookie('name', 'tobi', { signed: true });
+<<<<<<< HEAD
 				bool = true;
 				res.render('index',{
 					"signed": req.body.username});
+=======
+				res.render('index_',{
+					"signed":!!req.body.username
+					});
+>>>>>>> e674feb450286033246955e1ecc6d3ef7260cd59
 				//res.cookie('password', req.body.password, { path: '/index', signed: true });
 
 			  }
 			}
 			if(flag){
 				console.log("Your username does not exist!");
+<<<<<<< HEAD
 				res.render('login',{
 					"signed":false});
+=======
+				res.render('login',{"signed":false});
+>>>>>>> e674feb450286033246955e1ecc6d3ef7260cd59
 			}
 		});
 		
@@ -178,48 +205,6 @@ router.post('/login', function(req, res) {
 	
 
 });
-/*
-//執行註冊
-router.post =('/register', function(req, res){
-	console.log('testttt');
-	if(req.body.password != req.body.password2){
-		console.log('密碼輸入不一致。');
-		console.log('第一次輸入的密碼：' + req.body.password);
-		console.log('第二次輸入的密碼：' + req.body.password2);
-		return res.redirect('/register');
-	}
-	else{
-		// Set our internal DB variable
-		var db = req.db;
-		// Get our form values. These rely on the "name" attributes
-		var userName = req.body.username;
-		console.log(userName);
-		var passWord = req.body.password;
-		console.log(passWord);
-		// Set our collection
-		var collection = db.get('usercollection');
-		// Submit to the DB
-		collection.insert({
-			"username" : userName,
-			"password" : passWord
-		}, function (err, doc) {
-			if (err) {
-				// If it failed, return error
-				res.send("There was a problem adding the information to the database.");
-			}
-			else {
-				// If it worked, set the header so the address bar doesn't still say /adduser
-				res.location("userlist");
-				// And forward to success page
-				res.redirect("userlist");
-			}
-		});
-		res.cookie('userid', req.body.username, { path: '/', signed: true});		
-		res.cookie('password', req.body.password, { path: '/', signed: true });
-		return res.redirect('/');
-	}
-});*/
-
 //檢查使用者登入狀態
 var isLogin = false;
 var checkLoginStatus = function(req, res){
