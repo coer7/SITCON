@@ -82,7 +82,8 @@ router.post('/login', function(req, res) {
 	console.log("passWord= "+passWord);
     collection.find({},{},function(e,docs){
 		var objKey = Object.keys(docs);
-		console.log("objKey= "+objKey);
+		
+		console.log("objKey length= "+objKey.length);
 		console.log("doc= "+JSON.stringify(docs[0]));
 		console.log("doc= "+JSON.stringify(docs[0].password));
 		/*
