@@ -94,7 +94,18 @@ router.post('/login', function(req, res) {
 			})
 		})
 
-		console.log("doc= "+JSON.stringify(docs[0].password));
+    for( var i=0;i<objKey.length;i++){
+      
+
+      if(userName == JSON.stringify(docs[i].username)){
+        console.log("Hello! " + userName);
+        console.log("Your password is "+passWord)
+      }else{
+        console.log("Your username is not exist!");
+      }
+
+    }
+	
 		
 	});
 
