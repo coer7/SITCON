@@ -16,50 +16,29 @@ router.get('/index', function(req, res, next) {
 
 	
 });
-<<<<<<< HEAD
+
 
 router.post('/logout', function(req, res) {
 	
 	bool = false;
 	used = false;
-  
   	res.render('index', { title: 'Express' ,"signed": used});
-
-	
-=======
-router.get('/index_', function(req, res, next) {
-  res.render('index_', { title: 'Express' ,"signed":!!req.body.username});
->>>>>>> e674feb450286033246955e1ecc6d3ef7260cd59
 });
 router.get('/register', function(req, res, next) {
-  res.render('register', { title: 'Express register',"signed":!!req.cookie.username });
+  res.render('register', { title: 'Express register',"signed":!!req.body.username });
 });
 router.get('/login', function(req, res, next) {
-<<<<<<< HEAD
-	used = bool ? true : false;
-	
-  
+
+	used = bool ? true : false
   	res.render('login', { title: 'Express' ,"signed": used});
 
-	
-=======
-  res.render('login', { title: 'Express login' ,"signed":!!req.body.username});
 });
-router.get('/login_', function(req, res, next) {
-  res.render('login_', { title: 'Express login' ,"signed":!!req.body.username});
->>>>>>> e674feb450286033246955e1ecc6d3ef7260cd59
-});
+
 router.get('/personal_page', function(req, res, next) {
-<<<<<<< HEAD
+
 	used = bool ? true : false;
 	
-  	
   	res.render('personal_page', { title: 'Express' ,"signed":used});
-
-	
-=======
-  res.render('personal_page', { title: 'Express personal' ,"signed":false});
->>>>>>> e674feb450286033246955e1ecc6d3ef7260cd59
 });
 router.get('/personal_page_', function(req, res, next) {
   res.render('personal_page_');
@@ -143,9 +122,10 @@ router.post('/register', function(req, res) {
 			}
 			else {
 				// If it worked, set the header so the address bar doesn't still say /adduser
-				res.location("userlist");
+				bool=true;
+				res.location("index");
 				// And forward to success page
-				res.redirect("userlist");
+				res.redirect("index");
 			}
 		});
 			
@@ -177,27 +157,20 @@ router.post('/login', function(req, res) {
 				console.log("Your password is "+passWord)
 				//res.cookie('username', req.body.username, { signed: true});		
 				//res.cookie('name', 'tobi', { signed: true });
-<<<<<<< HEAD
+
 				bool = true;
 				res.render('index',{
 					"signed": req.body.username});
-=======
-				res.render('index_',{
-					"signed":!!req.body.username
-					});
->>>>>>> e674feb450286033246955e1ecc6d3ef7260cd59
+
 				//res.cookie('password', req.body.password, { path: '/index', signed: true });
 
 			  }
 			}
 			if(flag){
 				console.log("Your username does not exist!");
-<<<<<<< HEAD
 				res.render('login',{
 					"signed":false});
-=======
-				res.render('login',{"signed":false});
->>>>>>> e674feb450286033246955e1ecc6d3ef7260cd59
+
 			}
 		});
 		

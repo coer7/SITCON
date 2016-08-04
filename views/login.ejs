@@ -21,17 +21,15 @@
 
 				<div class="nav-right">
 					<nav>
-						<a href="/register">註冊</a>
+						
 						<% if (signed) { %>
 							<a href="/login">登出</a>
 							<% console.log(signed) %>
 						<% }else { %>
 							<a href="/login">登入</a>
+							<a href="/register">註冊</a>
 							<% console.log(signed) %>
-<<<<<<< HEAD
 
-=======
->>>>>>> e674feb450286033246955e1ecc6d3ef7260cd59
 						<% } %>
 						<a href="/personal_page">個人資料</a>
 					</nav>

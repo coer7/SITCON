@@ -21,12 +21,13 @@
 
 				<div class="nav-right">
 					<nav>
-						<a href="/register">註冊</a>
+
 						<% if (signed) { %>
 						
 							<a href="/login">登出</a>
 							<% console.log(signed) %>
 						<% }else { %>
+							<a href="/register">註冊</a>
 							<a href="/login">登入</a>
 							<% console.log(signed) %>
 
