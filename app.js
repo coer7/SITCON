@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var reg=require('./routes/reg');
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var path = require('path');
 
 var mongo = require('mongodb');
 var monk = require('monk');
@@ -22,7 +23,7 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser(12345));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
