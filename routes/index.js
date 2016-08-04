@@ -21,4 +21,56 @@ router.get('/login', function(req, res, next) {
 router.get('/personal_page', function(req, res, next) {
   res.render('personal_page', { title: 'Express personal' });
 });
+
+router.get('/userlist', function(req, res) {
+    var db = req.db;
+    var collection = db.get('usercollection');
+    collection.find({},{},function(e,docs){
+      var objKey = Object.keys(docs);
+	  console.log(objKey);
+      objKey.forEach(function(objectid){
+        var items = Object.keys(docs[objectid]);
+        items.forEach(function(itemkey) {
+          var itemvalue =docs[objectid][itemkey];
+          console.log(objectid+': '+itemkey+' = '+itemvalue);
+        })
+      })
+      res.render('userlist', {
+          "userlist" : docs
+      });
+	  //res.send(JSON.stringify(docs));
+    });
+});
+/* POST to Add User Service */
+router.post('/register', function(req, res) {
+	console.log("Enter!")
+    // Set our internal DB variable
+    var db = req.db;
+ 
+    // Get our form values. These rely on the "name" attributes
+    var userName = req.body.username;
+	console.log(userName);
+    var passWord = req.body.password;
+	console.log(passWord);
+    // Set our collection
+    var collection = db.get('usercollection');
+ 
+    // Submit to the DB
+    collection.insert({
+        "username" : userName,
+        "password" : passWord
+    }, function (err, doc) {
+        if (err) {
+            // If it failed, return error
+            res.send("There was a problem adding the information to the database.");
+        }
+        else {
+            // If it worked, set the header so the address bar doesn't still say /adduser
+            res.location("userlist");
+            // And forward to success page
+            res.redirect("userlist");
+        }
+    });
+});
 module.exports = router;
+
