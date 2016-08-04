@@ -6,13 +6,13 @@ var bool=false;
 router.get('/', function(req, res, next) {
   	used = bool ? true : false;
 	
-  	res.render('index', { title: 'Express' ,"signed": used,"posts":postList});
+  	res.render('index', { title: 'Express' ,"signed": used,"posts":postList,"add":addList});
 });
 
 router.get('/index', function(req, res, next) {
 	used = bool ? true : false;
 	
-  	res.render('index', { title: 'Express' ,"signed": used,"posts":postList});
+  	res.render('index', { title: 'Express' ,"signed": used,"posts":postList,"add":addList});
 
 	
 });
@@ -183,13 +183,23 @@ var postList = [
 ]; 
 var count = postList.length;
 console.log(count);
+
+var addList=[];
+router.post('/add',function(req,res){
+	console.log("Add new");
+	console.log(req.body.end);
+	var element = {'post': req.body.post,'des': req.body.des ,'start': req.body.start,'end': req.body.end ,'price': req.body.price};
+    addList.push(element);
+	res.render('index', { title: 'Express' ,"signed": used,"add":addList,"posts":postList});
+});
+
 //發表訊息
 router.post('/post', function(req, res) {
 console.log("Post");
 	var element = { id: (count+=1), name: anUser, msg: req.body.post };
 	postList.push(element);
 	console.log(postList);
-		res.render('index', { title: 'Express' ,"signed": used,"posts":postList});
+		res.render('index', { title: 'Express' ,"signed": used,"posts":postList,"add":addList});
 
 
 

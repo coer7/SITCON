@@ -40,91 +40,41 @@
 
 			<main>
 				<div class="items">
+				<% add.forEach(function(post, index){ %>
 					<div class="item">
 						<div class="item_title"><a href="">
 							<div class="item_name">
-								橘子
+								<%= post.post %>
 							</div>
 							<div class="item_owner">
-								(橘子假期)
+								<%= post.des %>
 							</div>
 						</a></div>
 	
 						<div class="item_time">
 							<div class="item_time_start">
-								2016/8/4 19:30:00
+								<%= post.start %>
 							</div>
 							<div class="item_time_end">
-								2016/8/4 19:30:59
+								<%= post.end %>
 							</div>
 						</div>
 	
 						<div class="item_price">
-							目前售價: 81000 
+							目前售價: <%= post.price %> 
 						</div>
 						<div class="item_owner">
 							(得標人)
 						</div>
 	
 					</div>
-					<div class="item">
-						<div class="item_title"><a href="">
-							<div class="item_name">
-								橘子
-							</div>
-							<div class="item_owner">
-								(橘子假期)
-							</div>
-						</a></div>
-	
-						<div class="item_time">
-							<div class="item_time_start">
-								2016/8/4 19:30:00
-							</div>
-							<div class="item_time_end">
-								2016/8/4 19:30:59
-							</div>
-						</div>
-	
-						<div class="item_price">
-							目前售價: 81000 
-						</div>
-						<div class="item_owner">
-							(得標人)
-						</div>
-	
-					</div>
-					<div class="item">
-						<div class="item_title"><a href="">
-							<div class="item_name">
-								橘子
-							</div>
-							<div class="item_owner">
-								(橘子假期)
-							</div>
-						</a></div>
-	
-						<div class="item_time">
-							<div class="item_time_start">
-								2016/8/4 19:30:00
-							</div>
-							<div class="item_time_end">
-								2016/8/4 19:30:59
-							</div>
-						</div>
-	
-						<div class="item_price">
-							目前售價: 81000 
-						</div>
-						<div class="item_owner">
-							(得標人)
-						</div>
-	
-					</div>
+				<% }) %>
+
+					
 				</div>
 				<% if (signed) { %>
 					<form method="post" action="/post" class="well form-inline center" style="text-align:center;">
-						<input type="text" class="span8" name="post">
+						留言: <input type="text" class="span8" name="post">
 						<button type="submit" class="btn btn-success"><i class="icon-comment icon-white"></i>發言</button>
 					</form>
 				<%}%>
