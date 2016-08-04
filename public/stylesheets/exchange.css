@@ -1,8 +1,14 @@
+a{
+	color: #00B7FF;
+}
 body { background-color: #AAD7EE;
 			color: #000000;
 			font-family: Arial, Verdana, sans-serif;
 			-moz-background-size: cover;
-			background-size: cover;}
+			background-size: cover;
+		padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
 header   { text-align: center;}
 footer   { background-color: #A9D7DA;
 			color: #000000;
