@@ -3,11 +3,12 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Express' ,
+  "signed":!!req.body.username});
 });
 
 router.get('/index', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Express' ,"signed":!!req.body.username});
 });
 
 router.get('/register', function(req, res, next) {
@@ -134,7 +135,8 @@ router.post('/login', function(req, res) {
 				console.log("Your password is "+passWord)
 				//res.cookie('username', req.body.username, { signed: true});		
 				//res.cookie('name', 'tobi', { signed: true });
-				res.render('index',{signed:!!req.body.username});
+				res.render('index',{
+					"signed":!!req.body.username});
 				//res.cookie('password', req.body.password, { path: '/index', signed: true });
 
 			  }
