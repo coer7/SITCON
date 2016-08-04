@@ -1,16 +1,25 @@
-a{
-	color: #00B7FF;
+/*	字型: 思源黑體 
+	教學: http://goo.gl/q9j4tN	
+*/
+@import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
+*{font-size:20px; font-family: 'Noto Sans TC', sans-serif;}
+/* body {padding:3%; line-height:2em;}*/
+html ,body { line-height:2em; }
+h1{
+	font-size:2em;
+	/* color: red;*/
 }
-body { background-color: #AAD7EE;
+
+
+body { background-color: #fff5e6;
 			color: #000000;
-			font-family: Arial, Verdana, sans-serif;
 			-moz-background-size: cover;
 			background-size: cover;
 		padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 header   { text-align: center;}
-footer   { background-color: #A9D7DA;
+footer   { background-color:#ffb31a;
 			color: #000000;
 			font-size: .80em;
 			font-style: italic;
@@ -18,13 +27,19 @@ footer   { background-color: #A9D7DA;
 h2{
 	text-align:center;
 }
-.wrapper { background-color: #E0F5FB;
+.wrapper { background-color:  #ffc266;
+		border-radius: 3px;
 		margin-left: auto;	
         margin-right: auto;
 		width: 80%; 
 		min-width: 700px;
 		max-width: 1024px;
 		box-shadow: 5px 5px 5px #888888; }
+.nav-left{
+	
+	text-align: left;
+	float:left;
+}
 .nav-right{
 	
 	text-align: right;
@@ -42,5 +57,60 @@ a.button {
 	font-family: Arial, Verdana, sans-serif;
     text-decoration: none;
     color: initial;
+}
+
+header > h1 {
+	padding-top: 20px;
+}
+
+header > div a {
+	display: inline-block;
+	box-sizing: borer-box;
+	min-width: 7em;
+	margin:5px;
+	padding: 2px 3px;
+	border-radius: 3px;
+	background-color: rgb(177, 196, 215);
+	transition: background-color 300ms;
+}
+header > div a:hover{
+	background-color: rgb(55, 96, 138);
+}
+
+main > p {
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+/* text */
+
+header > div a {
+	text-align: center;
+	text-decoration: none;
+	color: #EEE;
+}
+
+
+/**************************************
+item
+**************************************/
+.item {
+	display:inline-block;
+	width:40%;
+	min-width: 15em;
+	background-color:white;
+	margin: 4.75%;
+	border: 5em;
+}
+
+.item_title .item_name, .item_price, .time_start{
+	float : left;
+}
+.item_owner{
+	margin-left: 2.5em;
+	font-size: 0.87em;
+}
+.item_time_start ,.item_time_end{
+	font-size: 0.80em;
 }
 
