@@ -84,14 +84,25 @@ router.post('/login', function(req, res) {
 		var objKey = Object.keys(docs);
 		console.log("objKey= "+objKey);
 		console.log("doc= "+JSON.stringify(docs[0]));
+		console.log("doc= "+JSON.stringify(docs[0].password));
+		/*
 		objKey.forEach(function(objectid){
 			console.log("test");
 			var items = Object.keys(docs[objectid]);
+			console.log(items);
+			 for (var i in items[2]) {
+				 console.log("TTTTTTTTTTTTTTTTT");
+				var itemvalue =docs[objectid][itemkey];
+				console.log("itemvalue= ~" +itemvalue);
+				 console.log("ID= "+objectid+" itemvalue="+itemvalue);
+			 }
 			items.forEach(function(itemkey) {
-			  var itemvalue =docs[objectid][itemkey];
-			  console.log("ID="+objectid+': '+itemkey+' = '+itemvalue);
+				var itemvalue =docs[objectid][itemkey];
+				console.log("ID= "+objectid+" itemvalue="+itemvalue);
+				console.log("Itemkey="+itemkey);
+				console.log("ID="+objectid+': '+itemkey+' = '+itemvalue);
 			})
-		})
+		})*/
 	});
 
 	
