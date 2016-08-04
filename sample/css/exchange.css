@@ -1,0 +1,87 @@
+/*	字型: 思源黑體 
+	教學: http://goo.gl/q9j4tN	
+*/
+@import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+*{font-size:14px; font-family: 'Noto Sans TC', sans-serif;}
+/* body {padding:3%; line-height:2em;}*/
+html ,body { line-height:2em; }
+h1{font-size:2em;}
+
+
+body { background-color: #AAD7EE;
+			color: #000000;
+			font-family: Arial, Verdana, sans-serif;
+			-moz-background-size: cover;
+			background-size: cover;}
+header   { text-align: center;}
+footer   { background-color: #A9D7DA;
+			color: #000000;
+			font-size: .80em;
+			font-style: italic;
+			text-align: center;	}
+h2{
+	text-align:center;
+}
+.wrapper { background-color: #E0F5FB;
+		border-radius: 3px;
+		margin-left: auto;	
+        margin-right: auto;
+		width: 80%; 
+		min-width: 700px;
+		max-width: 1024px;
+		box-shadow: 5px 5px 5px #888888; }
+.nav-left{
+	
+	text-align: left;
+	float:left;
+}
+.nav-right{
+	
+	text-align: right;
+	
+}
+.column-center{
+	
+	text-align: center;
+	
+}
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+	font-family: Arial, Verdana, sans-serif;
+    text-decoration: none;
+    color: initial;
+}
+
+header > h1 {
+	padding-top: 20px;
+}
+
+header > div a {
+	display: inline-block;
+	box-sizing: borer-box;
+	min-width: 7em;
+	margin:5px;
+	padding: 2px 3px;
+	border-radius: 3px;
+	background-color: rgb(177, 196, 215);
+	transition: background-color 300ms;
+}
+header > div a:hover{
+	background-color: rgb(55, 96, 138);
+}
+
+main > p {
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+/* text */
+
+header > div a {
+	text-align: center;
+	text-decoration: none;
+	color: #EEE;
+}
