@@ -8,7 +8,6 @@ var reg=require('./routes/reg');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var path = require('path');
-
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/exchange');

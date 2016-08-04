@@ -6,13 +6,13 @@ var bool=false;
 router.get('/', function(req, res, next) {
   	used = bool ? true : false;
 	
-  	res.render('index', { title: 'Express' ,"signed": used});
+  	res.render('index', { title: 'Express' ,"signed": used,"posts":postList});
 });
 
 router.get('/index', function(req, res, next) {
 	used = bool ? true : false;
 	
-  	res.render('index', { title: 'Express' ,"signed": used});
+  	res.render('index', { title: 'Express' ,"signed": used,"posts":postList});
 
 	
 });
@@ -123,15 +123,16 @@ router.post('/register', function(req, res) {
 			else {
 				// If it worked, set the header so the address bar doesn't still say /adduser
 				bool=true;
-				res.location("index");
+				res.location("personal_page");
 				// And forward to success page
-				res.redirect("index");
+				res.redirect("personal_page");
 			}
 		});
 			
 	}
 	
 });
+var anUser="String";
 router.post('/login', function(req, res) {
 	if(req.body.password != req.body.password2){
 		console.log('密碼輸入不一致。');
@@ -144,6 +145,9 @@ router.post('/login', function(req, res) {
 		var db = req.db;
 		var collection = db.collection('usercollection');
 		var userName = req.body.username;
+		anUser=userName;
+		//console.log(userName==anUser);
+		
 		var flag=true;
 		//console.log("userName= "+userName);
 		var passWord = req.body.password;
@@ -155,15 +159,9 @@ router.post('/login', function(req, res) {
 				flag=false;
 				console.log("Hello! " + userName);
 				console.log("Your password is "+passWord)
-				//res.cookie('username', req.body.username, { signed: true});		
-				//res.cookie('name', 'tobi', { signed: true });
-
 				bool = true;
-				res.render('index',{
+				res.render('personal_page',{
 					"signed": req.body.username});
-
-				//res.cookie('password', req.body.password, { path: '/index', signed: true });
-
 			  }
 			}
 			if(flag){
@@ -176,6 +174,24 @@ router.post('/login', function(req, res) {
 		
 	}
 	
+
+});
+var postList = [
+	{ id: 1, name: "Apple", msg: "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the gre‬" },
+	{ id: 2, name: "Zoe", msg: "The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymph. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta." },
+	{ id: 3, name: "Cathy", msg: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu" }
+]; 
+var count = postList.length;
+console.log(count);
+//發表訊息
+router.post('/post', function(req, res) {
+console.log("Post");
+	var element = { id: (count+=1), name: anUser, msg: req.body.post };
+	postList.push(element);
+	console.log(postList);
+		res.render('index', { title: 'Express' ,"signed": used,"posts":postList});
+
+
 
 });
 //檢查使用者登入狀態
