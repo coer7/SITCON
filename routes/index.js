@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var bool=false;
-var username,password;
+var username,password,now_price;
 /* GET home page. */
 router.get('/', function(req, res, next) {
   	used = bool ? true : false;
@@ -40,7 +40,9 @@ router.get('/personal_page', function(req, res, next) {
 
 	used = bool ? true : false;
 	
-  	res.render('personal_page', { title: 'Express' ,"signed":used ,"username":username,"password":password,"posts":postList,"add":addList,"anUser":anUser});
+
+  	res.render('personal_page', { title: 'Express' ,"signed":used ,"username":username,"password":password,"price":now_price});
+
 });
 // router.get('/personal_page_', function(req, res, next) {
 //   res.render('personal_page_', {"username":req.body.username,"password":req.body.password});
@@ -95,6 +97,66 @@ router.post('/register', function(req, res) {
     });
 });*/
 // POST to Add User Service 
+router.post('/price',function(req,res){
+
+	var price = req.body.price;
+
+	var db = req.db;
+	var collection = db.collection('usercollection');
+
+	now_price = now_price - price;
+	
+	collection.update({"username":username},{
+
+
+      $set: { "coin": now_price},
+      $currentDate: { "lastModified": true }
+    
+	},function(err,docs){
+			if(err){
+				console.log("no update");
+			}else{
+
+			
+			var objKey = Object.keys(docs);
+  			used = bool ? true : false;
+
+			
+				
+			console.log("Hello! " + username);
+			console.log("Your price is "+price)
+
+				 
+			res.render('personal_page',{
+					"signed": used,"username":req.body.username,"password":req.body.password,"price": now_price });
+			  
+			 }
+			
+		});
+	// collection.find({},{},function(e,docs){
+	// 		var objKey = Object.keys(docs);
+ //  			used = bool ? true : false;
+
+	// 		for( var i=0;i<objKey.length;i++){
+	// 		  if(username == docs[i].username){
+				
+	// 			console.log("Hello! " + username);
+	// 			console.log("Your price is "+price)
+
+				 
+	// 			now_price = docs[i].coin - price;
+	// 			res.render('personal_page',{
+	// 				"signed": used,"username":req.body.username,"password":req.body.password,"price": now_price });
+	// 		  }else{
+	// 		  	console.log("Sure? Not Found Your Name");
+	// 		  }
+	// 		}
+			
+	// 	});
+
+});
+
+
 router.post('/register', function(req, res) {
 	console.log('testttt');
 	if(req.body.password != req.body.password2){
@@ -103,7 +165,7 @@ router.post('/register', function(req, res) {
 		console.log('第二次輸入的密碼：' + req.body.password2);
 		return res.redirect('/register');
 	}else{
-		console.log("Enter!")
+		console.log("Enter!");
 		// Set our internal DB variable
 		var db = req.db;
 		// Get our form values. These rely on the "name" attributes
@@ -116,7 +178,8 @@ router.post('/register', function(req, res) {
 		// Submit to the DB
 		collection.insert({
 			"username" : userName,
-			"password" : passWord
+			"password" : passWord,
+			"coin":100
 		}, function (err, doc) {
 			if (err) {
 				// If it failed, return error
@@ -126,16 +189,23 @@ router.post('/register', function(req, res) {
 				// If it worked, set the header so the address bar doesn't still say /adduser
 				username = userName;
 				password = passWord;
+				now_price=100;
 				bool=true;
 				res.location("personal_page");
 				// And forward to success page
-				res.redirect("personal_page");
+
+				// res.redirect("personal_page");
+				res.render('personal_page',{
+					"signed": req.body.username,"username":req.body.username,"password":req.body.password,"price": now_price });
 			}
 		});
 			
 	}
 	
 });
+
+
+
 var anUser="String";
 router.post('/login', function(req, res) {
 	if(req.body.password != req.body.password2){
@@ -155,7 +225,11 @@ router.post('/login', function(req, res) {
 		console.log("userName==anUser: " + (userName==anUser));
 		
 		var flag=true;
-		console.log("userName= "+userName);
+
+		//console.log("userName= "+userName);
+
+		//console.log("userName= "+userName);
+		now_price = req.body.coin;
 		var passWord = req.body.password;
 		console.log("passWord= "+passWord);
 		collection.find({},{},function(e,docs){
@@ -168,11 +242,14 @@ router.post('/login', function(req, res) {
 				flag=false;
 				console.log("Hello! " + userName);
 				console.log("Your password is "+passWord)
+				console.log("Hello! " + docs[i].coin);
+
 				bool = true;
 				username= userName;
 				password = passWord ;
+				now_price = docs[i].coin;
 				res.render('personal_page',{
-					"signed": req.body.username,"username":req.body.username,"password":req.body.password ,"posts":postList,"add":addList});
+					"signed": req.body.username,"username":req.body.username,"password":req.body.password ,"price":docs[i].coin});
 			  }
 			}
 			if(flag){
