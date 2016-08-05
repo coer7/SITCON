@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var bool=false;
-
+var username,password;
 /* GET home page. */
 router.get('/', function(req, res, next) {
   	used = bool ? true : false;
@@ -22,7 +22,7 @@ router.post('/logout', function(req, res) {
 	
 	bool = false;
 	used = false;
-  	res.render('index', { title: 'Express' ,"signed": used});
+  	res.render('index', { title: 'Express' ,"signed": used,"add":addList,"posts":postList});
 });
 router.get('/register', function(req, res, next) {
   res.render('register', { title: 'Express register',"signed":!!req.body.username });
@@ -38,11 +38,11 @@ router.get('/personal_page', function(req, res, next) {
 
 	used = bool ? true : false;
 	
-  	res.render('personal_page', { title: 'Express' ,"signed":used});
+  	res.render('personal_page', { title: 'Express' ,"signed":used ,"username":username,"password":password});
 });
-router.get('/personal_page_', function(req, res, next) {
-  res.render('personal_page_');
-});
+// router.get('/personal_page_', function(req, res, next) {
+//   res.render('personal_page_', {"username":req.body.username,"password":req.body.password});
+// });
 //var login=false;
 router.get('/userlist', function(req, res) {
     var db = req.db;
@@ -122,6 +122,8 @@ router.post('/register', function(req, res) {
 			}
 			else {
 				// If it worked, set the header so the address bar doesn't still say /adduser
+				username = userName;
+				password = passWord;
 				bool=true;
 				res.location("personal_page");
 				// And forward to success page
@@ -160,8 +162,10 @@ router.post('/login', function(req, res) {
 				console.log("Hello! " + userName);
 				console.log("Your password is "+passWord)
 				bool = true;
+				username= userName;
+				password = passWord ;
 				res.render('personal_page',{
-					"signed": req.body.username});
+					"signed": req.body.username,"username":req.body.username,"password":req.body.password });
 			  }
 			}
 			if(flag){
