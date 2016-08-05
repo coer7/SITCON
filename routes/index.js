@@ -184,10 +184,16 @@ var postList = [
 var count = postList.length;
 console.log(count);
 
-var addList=[];
+var addList=[
+	{'post': "橘子",'des': "橘子假期" ,'start': '2016/8/02','end': '2016/8/05' ,'price': 1000},
+	{'post': "橘子",'des': "橘子假期" ,'start': '2016/8/02','end': '2016/8/05' ,'price': 1000},
+	{'post': "橘子",'des': "橘子假期" ,'start': '2016/8/02','end': '2016/8/05' ,'price': 1000}
+];
 router.post('/add',function(req,res){
 	console.log("Add new");
 	console.log(req.body.end);
+	used = bool ? true : false;
+
 	var element = {'post': req.body.post,'des': req.body.des ,'start': req.body.start,'end': req.body.end ,'price': req.body.price};
     addList.push(element);
 	res.render('index', { title: 'Express' ,"signed": used,"add":addList,"posts":postList});
@@ -198,6 +204,9 @@ router.post('/post', function(req, res) {
 console.log("Post");
 	var element = { id: (count+=1), name: anUser, msg: req.body.post };
 	postList.push(element);
+
+	used = bool ? true : false;
+
 	console.log(postList);
 		res.render('index', { title: 'Express' ,"signed": used,"posts":postList,"add":addList});
 
