@@ -48,14 +48,18 @@
 				</form>
 				<h2>持有商品</h2>
 				<% add.forEach(function(post, index){ %>
+
 				<% console.log(post)  %>
+
 					<div class="item">
 						<div class="item_title"><a href="">
 							<div class="item_name">
 								商品名稱: <%= post.post %>
 							</div></a>
 							<br><div class="item_name">
+
 								商品持有人: <%= username%> <% console.log("TESTTT "+username)  %>
+
 							</div>
 							<div class="item_owner">
 								<br>商品介紹: <%= post.des %>
@@ -79,7 +83,7 @@
 						</div>
 	
 					</div>
-					
+					<%}%>
 				<% }) %>
 				<h2>增加新商品</h2>
 					<form method="post" action="/add" class="well form-inline center" style="text-align:center;">
