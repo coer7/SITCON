@@ -78,7 +78,7 @@
 						<button type="submit" class="btn btn-success"><i class="icon-comment icon-white"></i>發言</button>
 					</form>
 				<%}%>
-
+				<div class="print">
 				<% posts.forEach(function(post, index) { %>
 
 					<h2><a href="/u/<%= post.name %>"><%= post.name %></a> 說</h2>
@@ -86,6 +86,7 @@
 				  
 
 				<%}) %>
+				</div>
 			</main>
 
 			<footer>
