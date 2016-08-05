@@ -41,7 +41,7 @@ router.get('/personal_page', function(req, res, next) {
 	used = bool ? true : false;
 	
 
-  	res.render('personal_page', { title: 'Express' ,"signed":used ,"username":username,"password":password,"price":now_price});
+  	res.render('personal_page', { title: 'Express' ,"signed":used ,"username":username,"password":password,"price":now_price,"add":addList,"posts":postList});
 
 });
 // router.get('/personal_page_', function(req, res, next) {
@@ -249,7 +249,7 @@ router.post('/login', function(req, res) {
 				password = passWord ;
 				now_price = docs[i].coin;
 				res.render('personal_page',{
-					"signed": req.body.username,"username":req.body.username,"password":req.body.password ,"price":docs[i].coin});
+					"signed": req.body.username,"username":req.body.username,"password":req.body.password ,"price":docs[i].coin,"add":addList,"posts":postList});
 			  }
 			}
 			if(flag){
