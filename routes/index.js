@@ -30,7 +30,9 @@ router.get('/register', function(req, res, next) {
 router.get('/login', function(req, res, next) {
 
 	used = bool ? true : false
-  	res.render('login', { title: 'Express' ,"signed": used});
+	anUser=req.body.username;
+	console.log("qerwawerwewreqer: "+anUser);
+  	res.render('login', { title: 'Express' ,"signed": used,"add":addList,"posts":postList});
 
 });
 
@@ -38,7 +40,7 @@ router.get('/personal_page', function(req, res, next) {
 
 	used = bool ? true : false;
 	
-  	res.render('personal_page', { title: 'Express' ,"signed":used ,"username":username,"password":password});
+  	res.render('personal_page', { title: 'Express' ,"signed":used ,"username":username,"password":password,"posts":postList,"add":addList,"anUser":anUser});
 });
 // router.get('/personal_page_', function(req, res, next) {
 //   res.render('personal_page_', {"username":req.body.username,"password":req.body.password});
@@ -146,17 +148,22 @@ router.post('/login', function(req, res) {
 		
 		var db = req.db;
 		var collection = db.collection('usercollection');
+		console.log("collection= "+collection);
 		var userName = req.body.username;
 		anUser=userName;
-		//console.log(userName==anUser);
+		console.log("anUser= "+anUser);
+		console.log("userName==anUser: " + (userName==anUser));
 		
 		var flag=true;
-		//console.log("userName= "+userName);
+		console.log("userName= "+userName);
 		var passWord = req.body.password;
-		//console.log("passWord= "+passWord);
+		console.log("passWord= "+passWord);
 		collection.find({},{},function(e,docs){
+			console.log("123");
 			var objKey = Object.keys(docs);
+			console.log("objKey.length= "+  objKey.length);
 			for( var i=0;i<objKey.length;i++){
+				console.log("userName == docs[i].username= "+ (userName == docs[i].username ));
 			  if(userName == docs[i].username){
 				flag=false;
 				console.log("Hello! " + userName);
@@ -165,7 +172,7 @@ router.post('/login', function(req, res) {
 				username= userName;
 				password = passWord ;
 				res.render('personal_page',{
-					"signed": req.body.username,"username":req.body.username,"password":req.body.password });
+					"signed": req.body.username,"username":req.body.username,"password":req.body.password ,"posts":postList,"add":addList});
 			  }
 			}
 			if(flag){
@@ -199,8 +206,10 @@ router.post('/add',function(req,res){
 	used = bool ? true : false;
 
 	var element = {'post': req.body.post,'des': req.body.des ,'start': req.body.start,'end': req.body.end ,'price': req.body.price};
-    addList.push(element);
-	res.render('index', { title: 'Express' ,"signed": used,"add":addList,"posts":postList});
+    console.log("NAME is here " +anUser);
+	 console.log("post is here " +req.body.post);
+	addList.push(element);
+	res.render('index', { title: 'Express' ,"signed": used,"add":addList,"posts":postList,"anUser":anUser});
 });
 
 //發表訊息
@@ -217,6 +226,7 @@ console.log("Post");
 
 
 });
+
 //檢查使用者登入狀態
 var isLogin = false;
 var checkLoginStatus = function(req, res){

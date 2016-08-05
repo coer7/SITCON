@@ -110,6 +110,7 @@ item
 	margin: 4.75%;
 	border: 5em;
 }
+
 .item_title .item_name, .item_price, .time_start{
 	float : left;
 }

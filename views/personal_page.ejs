@@ -45,27 +45,51 @@
 					<output name="pwd" > <%= password %> </output>
 				</form>
 				<h2>持有商品</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-					Nulla sit amet porttitor ante. Aliquam sit amet tincidunt lacus. 
-					Integer lobortis lacinia est quis posuere. Integer ut commodo tellus, 
-					non ornare sem. Donec luctus nibh et nisl interdum, sit amet congue odio tincidunt. 
-					Sed ultrices sit amet risus non mattis. Duis eget ante vitae sem semper sodales.
-					In vitae molestie arcu, nec rhoncus augue. Nulla auctor leo vitae imperdiet porta. 
-					ellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-					Fusce tellus libero, aliquam ut molestie et, tincidunt a turpis. 
-					Maecenas vitae turpis elit. Nulla ac ornare turpis. Lorem ipsum dolor sit amet, 
-					consectetur adipiscing elit. In quis facilisis nisl. Pellentesque feugiat eu orci et scelerisque. 
-					In pellentesque, diam et scelerisque varius, sem ante mollis libero, vitae condimentum elit mauris eu turpis.
-				</p>
+				<% add.forEach(function(post, index){ %>
+				
+					<div class="item">
+						<div class="item_title"><a href="">
+							<div class="item_name">
+								商品名稱: <%= post.post %>
+							</div></a>
+							<br><div class="item_name">
+								商品持有人: <%= post.name%> <%= console.log("TESTTT "+post.name)  %>
+							</div>
+							<div class="item_owner">
+								<br>商品介紹: <%= post.des %>
+							</div>
+						</div>
+	
+						<div class="item_time">
+							<div class="item_time_start">
+								開始日期: <%= post.start %>
+							</div>
+							<div class="item_time_end">
+								結束日期: <%= post.end %>
+							</div>
+						</div>
+	
+						<div class="item_price">
+							目前售價: <%= post.price %> 
+						</div>
+						<div class="item_owner">
+							<br>得標人為: (得標人)
+						</div>
+	
+					</div>
+					
+				<% }) %>
 				<h2>增加新商品</h2>
 					<form method="post" action="/add" class="well form-inline center" style="text-align:center;">
-						商品名稱: <input type="text" class="span8" name="post"><br>
+						<label for="user" name="user">使用者名稱: <%= username %></label>
+						<br>商品名稱: <input type="text" class="span8" name="post"><br>
 						商品介紹: <input type="text" class="span8" name="des"><br>
 						開始日期: <input type="date" class="span8" name="start"><br>
 						結束日期: <input type="date" class="span8" name="end"><br>
 						商品價格: <input type="text" class="span8" name="price"><br>
 						<button type="submit" class="btn btn-success"><i class="icon-comment icon-white"></i>販售</button>
 					</form>
+
 			</main>
 
 			<footer>
