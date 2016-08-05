@@ -107,10 +107,11 @@ item
 	float : left;
 }
 .item_owner{
-	margin-left: 2.5em;
+	/*margin-left: 2.5em;*/
 	font-size: 0.87em;
 }
-.item_time_start ,.item_time_end{
+.item_time_start , .item_time_end{
 	font-size: 0.80em;
+	
 }
 

@@ -1,0 +1,17 @@
+http://camp.qbane.club
+
+https://www.sublimetext.com/
+
+http://slides.com/shouko/sitcon-camp-2016-nodejs-1#/
+
+https://sitcon.hackpad.com/SITCON-2016--J5B1P5gAtVW
+
+https://httpbin.org/
+
+sitcon_camp43
+0e3f974c8c4e7aac22d1
+
+$ ssh tle@srv.sitcon.camp
+
+
+C:\Program Files\MongoDB\Server\3.2\bin>
