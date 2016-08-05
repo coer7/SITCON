@@ -38,7 +38,7 @@ router.get('/personal_page', function(req, res, next) {
 
 	used = bool ? true : false;
 	
-  	res.render('personal_page', { title: 'Express' ,"signed":used ,"username":username,"password":password});
+  	res.render('personal_page', { title: 'Express' ,"signed":used ,"username":username,"password":password,"price":now_price});
 });
 // router.get('/personal_page_', function(req, res, next) {
 //   res.render('personal_page_', {"username":req.body.username,"password":req.body.password});
@@ -94,29 +94,61 @@ router.post('/register', function(req, res) {
 });*/
 // POST to Add User Service 
 router.post('/price',function(req,res){
+
 	var price = req.body.price;
+
+	var db = req.db;
 	var collection = db.collection('usercollection');
 
+	now_price = now_price - price;
 	
+	collection.update({"username":username},{
 
-	collection.find({},{},function(e,docs){
+
+      $set: { "coin": now_price},
+      $currentDate: { "lastModified": true }
+    
+	},function(err,docs){
+			if(err){
+				console.log("no update");
+			}else{
+
+			
 			var objKey = Object.keys(docs);
-			for( var i=0;i<objKey.length;i++){
-			  if(username == docs[i].username){
-				
-				console.log("Hello! " + username);
-				console.log("Your price is "+price)
+  			used = bool ? true : false;
 
-				now_price = docs[i].coin;
-				 now_price = now_price - price;
-				res.render('personal_page',{
-					"signed": req.body.username,"username":req.body.username,"password":req.body.password,"price": now_price });
-			  }else{
-			  	console.log("Sure? Not Found Your Name");
-			  }
-			}
+			
+				
+			console.log("Hello! " + username);
+			console.log("Your price is "+price)
+
+				 
+			res.render('personal_page',{
+					"signed": used,"username":req.body.username,"password":req.body.password,"price": now_price });
+			  
+			 }
 			
 		});
+	// collection.find({},{},function(e,docs){
+	// 		var objKey = Object.keys(docs);
+ //  			used = bool ? true : false;
+
+	// 		for( var i=0;i<objKey.length;i++){
+	// 		  if(username == docs[i].username){
+				
+	// 			console.log("Hello! " + username);
+	// 			console.log("Your price is "+price)
+
+				 
+	// 			now_price = docs[i].coin - price;
+	// 			res.render('personal_page',{
+	// 				"signed": used,"username":req.body.username,"password":req.body.password,"price": now_price });
+	// 		  }else{
+	// 		  	console.log("Sure? Not Found Your Name");
+	// 		  }
+	// 		}
+			
+	// 	});
 
 });
 
@@ -153,10 +185,14 @@ router.post('/register', function(req, res) {
 				// If it worked, set the header so the address bar doesn't still say /adduser
 				username = userName;
 				password = passWord;
+				now_price=100;
 				bool=true;
 				res.location("personal_page");
 				// And forward to success page
-				res.redirect("personal_page");
+
+				// res.redirect("personal_page");
+				res.render('personal_page',{
+					"signed": req.body.username,"username":req.body.username,"password":req.body.password,"price": now_price });
 			}
 		});
 			
@@ -195,13 +231,14 @@ router.post('/login', function(req, res) {
 				flag=false;
 				console.log("Hello! " + userName);
 				console.log("Your password is "+passWord)
-				console.log("Hello! " + now_price);
+				console.log("Hello! " + docs[i].coin);
 
 				bool = true;
 				username= userName;
 				password = passWord ;
+				now_price = docs[i].coin;
 				res.render('personal_page',{
-					"signed": req.body.username,"username":req.body.username,"password":req.body.password ,"price":now_price});
+					"signed": req.body.username,"username":req.body.username,"password":req.body.password ,"price":docs[i].coin});
 			  }
 			}
 			if(flag){
