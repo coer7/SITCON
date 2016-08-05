@@ -25,7 +25,7 @@ router.post('/logout', function(req, res) {
   	res.render('index', { title: 'Express' ,"signed": used,"add":addList,"posts":postList});
 });
 router.get('/register', function(req, res, next) {
-  res.render('register', { title: 'Express register',"signed":!!req.body.username });
+  res.render('register', { title: 'Express register',"signed":!!req.body.username ,"add":addList,"posts":postList});
 });
 router.get('/login', function(req, res, next) {
 
@@ -196,7 +196,7 @@ router.post('/register', function(req, res) {
 
 				// res.redirect("personal_page");
 				res.render('personal_page',{
-					"signed": req.body.username,"username":req.body.username,"password":req.body.password,"price": now_price });
+					"signed": req.body.username,"username":req.body.username,"password":req.body.password,"price": now_price ,"add":addList,"posts":postList});
 			}
 		});
 			
@@ -282,7 +282,7 @@ router.post('/add',function(req,res){
 	console.log(req.body.end);
 	used = bool ? true : false;
 
-	var element = {'post': req.body.post,'des': req.body.des ,'start': req.body.start,'end': req.body.end ,'price': req.body.price};
+	var element = {'post': req.body.post,'des': req.body.des ,'start': req.body.start,'end': req.body.end ,'price': req.body.price, 'name': anUser};
     console.log("NAME is here " +anUser);
 	 console.log("post is here " +req.body.post);
 	addList.push(element);
